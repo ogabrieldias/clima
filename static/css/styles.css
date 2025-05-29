@@ -1,0 +1,234 @@
+/* Geral */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+
+}
+
+body {
+    background: linear-gradient(180deg, #594cee 0%, #8dd0f5 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    background: url(back.jpg);
+    position: relative;
+}
+
+#container {
+    padding: 10px;
+    border-radius: 1rem;
+    max-width: 375px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px); /* Blur padrão para o contêiner */
+    border: 2px solid #fff;
+    overflow: hidden; /* Garante que o pseudo-elemento não ultrapasse as bordas do contêiner */
+}
+
+.hide {
+    display: none !important;
+}
+
+
+/* Form */
+.form h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    user-select: none;
+    color: rgb(0, 0, 0);
+}
+
+.form-input-container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.form input {
+    padding: 0.8rem;
+    border: none;
+    flex: 1;
+    border-radius: 4px 0 0 4px;
+}
+
+.form button {
+    padding: 0.8rem;
+    min-width: 50px;
+    margin-left: 8px;
+    background-color: #8dd0f5;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px;
+    cursor: pointer;
+}
+
+/* Clima */
+
+#weather-data,
+#error-message,
+#loader,
+#suggestions {
+    border-top: 1px solid #fff;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    user-select: none;
+}
+
+#weather-data h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+#weather-data h2 i {
+    font-size: 1rem;
+}
+
+#weather-data span {
+    margin: 0.6rem;
+}
+
+#temperature {
+    font-size: 4rem;
+}
+
+#country {
+    height: 35px;
+}
+
+#description-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.6rem 0;
+}
+
+#description {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#details-container #humidity {
+    border-right: 1px solid #fff;
+    margin: 0.6rem;
+    padding: 0.6rem;
+}
+
+#cidade_nome_css {
+    font-family: "Ubuntu", sans-serif;
+}
+
+/* Loader */
+
+#loader i {
+    animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Sugestões */
+#suggestions {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 0.8rem; /* Espaçamento entre os botões */
+
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#suggestions button {
+    min-width: 150px;
+    margin: 0.8rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: #8dd0f5;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.8;
+    transition: 0.4s;
+    user-select: none;
+    justify-items: center;
+}
+
+#suggestions button:hover {
+    opacity: 1;
+}
+
+#next-image {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+}
+
+#next-image.hidden {
+    display: none;
+}
+
+#city-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    visibility: hidden; /* Inicialmente escondido */
+    opacity: 0.8; /* Ajuste a opacidade conforme necessário */
+    border: none; /* Adicionado para remover qualquer borda */
+    margin: 0; /* Adicionado para remover qualquer margem */
+    padding: 0; /* Adicionado para remover qualquer padding */
+    box-sizing: border-box; /* Garante que padding e borda não alterem o tamanho do elemento */
+
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+
+}
+
+#background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
