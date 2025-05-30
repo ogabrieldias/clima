@@ -16,9 +16,9 @@ def index():
 @app.route('/get_weather', methods=['POST'])
 def get_weather():
     city_name = request.json['city']
-    api_key = '67d3951e778decfbc3ce684fb106fe29'
+    api_key = '67d3951e778decfbc3ce684fb106fe29'  # coloque sua chave real aqui
     weather_data = get_weather_data(city_name, api_key)
     return jsonify(weather_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=3000)
