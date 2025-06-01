@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Pega a chave da API do ambiente (variável OPENWEATHER_API_KEY)
-API_KEY = os.environ.get('OPENWEATHER_API_KEY') or '67d3951e778decfbc3ce684fb106fe29'
+API_KEY = os.environ.get('OPENWEATHER_API_KEY')
 
 def get_weather_data(city_name, api_key):
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&units=metric&appid={api_key}&lang=pt_br'
