@@ -45,15 +45,10 @@ const showNextImage = () => {
         document.body.style.backgroundSize = "cover"; // Ajuste da imagem ao tamanho da tela
         document.body.style.backgroundPosition = "center"; // Centralizar imagem
         currentImageIndex = (currentImageIndex + 1) % images.length;
-        hideBackgroundVideo(); // Esconde o vídeo de fundo
     }
 }
 
-// Função para esconder o vídeo de fundo
-const hideBackgroundVideo = () => {
-    const videoContainer = document.getElementById('background-video');
-    videoContainer.style.display = 'none';
-}
+
 
 
 
@@ -158,43 +153,43 @@ const hideInformation = () => {
 }
 
 // Função para exibir dados do clima
-    const showWeatherData = async (city, imageUrl) => {
-    hideInformation();
-    try {
-        const data = await getWeatherData(city);
+const showWeatherData = async (city, imageUrl) => {
+  hideInformation();
+  try {
+      const data = await getWeatherData(city);
 
-        if (data.cod === "404") {
-            showErrorMessage();
-            return;
-        }
+      if (data.cod === "404") {
+          showErrorMessage();
+          return;
+      }
 
-        cityElement.innerText = data.name;
-        tempElement.innerText = data.main.temp;
-        descElement.innerText = data.weather[0].description;
-        weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
-        humidityElement.innerText = `${data.main.humidity}%`;
-        windElement.innerText = `${data.wind.speed}km/h`;
-        countryElement.setAttribute("src", `https://flagsapi.com/${data.sys.country}/shiny/64.png`);
+      cityElement.innerText = data.name;
+      tempElement.innerText = data.main.temp;
+      descElement.innerText = data.weather[0].description;
+      weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+      humidityElement.innerText = `${data.main.humidity}%`;
+      windElement.innerText = `${data.wind.speed}km/h`;
+      countryElement.setAttribute("src", `https://flagsapi.com/${data.sys.country}/shiny/64.png`);
 
-        if (imageUrl) {
-            cityImageElement.setAttribute("src", imageUrl);
-            cityImageElement.style.visibility = "visible"; // Exibe a imagem da cidade
-        } else {
-            cityImageElement.style.visibility = "hidden"; // Esconde a imagem da cidade
-        }
+      if (imageUrl) {
+          cityImageElement.setAttribute("src", imageUrl);
+          cityImageElement.style.visibility = "visible"; // Exibe a imagem da cidade
+      } else {
+          cityImageElement.style.visibility = "hidden"; // Esconde a imagem da cidade
+      }
 
 
 
-        weatherContainer.classList.remove("hide");
+      weatherContainer.classList.remove("hide");
 
-        // Remover sugestões após selecionar uma
-        suggestionsContainer.classList.add("hide");
+      // Remover sugestões após selecionar uma
+      suggestionsContainer.classList.add("hide");
 
-        hideBackgroundVideo(); // Esconde o vídeo de fundo
+      hideBackgroundVideo(); // Esconde o vídeo de fundo
 }catch (error) {
-        console.error('Error displaying weather data:', error);
-        showErrorMessage();
-    }
+      console.error('Error displaying weather data:', error);
+      // showErrorMessage(); Esse trecho foi removido para evitar mostrar mensagem de erro novamente
+  }
 };
 
 // Mapeamento das sugestões para URLs de imagem
